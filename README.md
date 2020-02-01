@@ -41,7 +41,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false|
+|name|string|null: false|
 
 ### Association
 
