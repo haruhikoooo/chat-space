@@ -37,9 +37,18 @@ Things you may want to cover:
 |------|----|-------|
 |groupname|string|null: false|
 
-
 ## users_groupsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+## chatsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|chat|text|null: false|
+|user_id|integer|null: false, foreige_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
