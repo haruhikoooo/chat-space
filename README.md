@@ -31,11 +31,21 @@ Things you may want to cover:
 |email|string|null: false|
 |password|string|null: false|
 
+### Association
+
+- has_many :groups, through: :users_groups
+- has_many :chats
+
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |groupname|string|null: false|
+
+### Association
+
+- has_many :users, through: :users_groups
+- has_many :chats
 
 ## users_groupsテーブル
 
@@ -43,6 +53,11 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :user
+- belongs_to :groups
 
 ## chatsテーブル
 
@@ -52,3 +67,8 @@ Things you may want to cover:
 |image|text||
 |user_id|integer|null: false, foreige_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :users
+- belongs_to :groups
