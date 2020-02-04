@@ -4,5 +4,10 @@
       .username-box__name
         name
       .username-box__icons
-        icon
+        = link_to "#" ,class: "username-box__icons--btn" do
+          = icon('fas', 'edit')
+          %span<>
+        = link_to "#", class: "username-box__icons--btn" do
+          = icon('fas', 'cog')
+          %span<>
   .side-bar__group-list
