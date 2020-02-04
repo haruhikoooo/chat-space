@@ -1,3 +1,18 @@
 * {
   box-sizing: border-box;
 }
+
+.wrapper {
+  display: flex;
+}
+.side-bar {
+  background-color: #253141;
+  width: 300px;
+  height: 100vh
+}
+
+.main-contents {
+  background-color: #ffffff;
+  width: calc(100vh - 300px);
+  height: 100vh
+}
