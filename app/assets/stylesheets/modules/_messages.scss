@@ -21,7 +21,7 @@
       justify-content: space-between;
       &__name {
         line-height: 20px;
-        color: #ffffff
+        color: #ffffff;
       }
       &__icons {
         width: 60px;
@@ -37,6 +37,20 @@
   &__group-list{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
+    .group-box {
+      height: calc(20px + 15px + 5px + 11px + 40px);
+      padding: 20px 20px 40px;
+      color: #ffffff;
+      &__name {
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      &__chat {
+        font-size: 11px;
+        font-weight: bold;
+      }
+    }
   }
 }
 
