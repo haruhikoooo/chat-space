@@ -1,5 +1,13 @@
 .main-contents
   .main-contents__header
+    .group-info
+      .group-info__name
+        name
+      .group-info__member
+        member : name
+    .group-edit
+      = link_to "#", class: "group-edit__btn" do
+        Edit
   .main-contents__chat-list
     <チャット画面>
   .main-contents__footer
