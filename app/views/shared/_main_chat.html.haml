@@ -26,3 +26,11 @@
       .chat__message
         message
   .main-contents__footer
+    %form{class: "message-form"}
+      .message-form__box
+        %input{type: "text", placeholder: "type a message", class: "message-form__box__text"}
+        %label{class: "message-form__box__icon"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "message-form__box__icon--select"}
+      .message-form__btn
+        %input{type: "submit", value: "Send", class: "message-form__btn--send"}
