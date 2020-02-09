@@ -1,0 +1,24 @@
+.side-bar
+  .side-bar__header
+    .username-box
+      .username-box__name
+        name
+      .username-box__icons
+        = link_to "#" ,class: "username-box__icons--btn" do
+          = icon('fas', 'edit')
+          %span<>
+        = link_to "#", class: "username-box__icons--btn" do
+          = icon('fas', 'cog')
+          %span<>
+
+  .side-bar__group-list
+    .group-box
+      .group-box__name
+        name
+      .group-box__chat
+        まだメッセージはありません
+    .group-box
+      .group-box__name
+        name
+      .group-box__chat
+        message
