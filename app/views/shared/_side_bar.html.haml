@@ -12,13 +12,10 @@
           %span<>
 
   .side-bar__group-list
-    .group-box
-      .group-box__name
-        name
-      .group-box__chat
-        まだメッセージはありません
-    .group-box
-      .group-box__name
-        name
-      .group-box__chat
-        message
+    - current_user.groups.each do |group|
+      .group-box
+        = link_to '#' do
+          .group-box__name
+            = group.name
+          .group-box__chat
+            まだメッセージはありません
