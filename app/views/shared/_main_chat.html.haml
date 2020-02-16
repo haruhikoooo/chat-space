@@ -2,37 +2,25 @@
   .main-contents__header
     .group-info
       .group-info__name
-        name
+        = @group.name
       .group-info__member
-        member : name
+        Member :
+        - @group.users.each do |user|
+          = user.name
     .group-edit
-      = link_to "#", class: "group-edit__btn" do
+      = link_to edit_group_path(@group.id), class: "group-edit__btn" do
         Edit
 
   .main-contents__chat-list
-    .chat
-      .chat__info
-        .chat__info--left
-          name
-        .chat__info--right
-          2020/02/06(Thu) 20:19:19
-      .chat__message
-        message
-    .chat
-      .chat__info
-        .chat__info--left
-          name
-        .chat__info--right
-          2020/02/06(Thu) 20:21:29
-      .chat__message
-        message
+    = render partial: 'message/message', collection: @messages
 
   .main-contents__footer
-    %form{class: "message-form"}
-      .message-form__box
-        %input{type: "text", placeholder: "type a message", class: "message-form__box__text"}
-        %label{class: "message-form__box__icon"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "message-form__box__icon--select"}
-      .message-form__btn
-        %input{type: "submit", value: "Send", class: "message-form__btn--send"}
+    = form_for [@group, @message],url: group_message_index_path, class: "message-form" do |f|
+      .message-form
+        .message-form__box
+          = f.text_field :chat, placeholder: "type a message", class: "message-form__box__text"
+          %label{class: "message-form__box__icon"}
+            = icon('fas', 'image')
+            = f.file_field :image, class: "message-form__box__icon--select"
+        .message-form__btn
+          = f.submit "Send", class: "message-form__btn--send"
