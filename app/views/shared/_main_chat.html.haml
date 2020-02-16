@@ -2,11 +2,13 @@
   .main-contents__header
     .group-info
       .group-info__name
-        name
+        = @group.name
       .group-info__member
-        member : name
+        Member :
+        - @group.users.each do |user|
+          = user.name
     .group-edit
-      = link_to "#", class: "group-edit__btn" do
+      = link_to edit_group_path(@group.id), class: "group-edit__btn" do
         Edit
 
   .main-contents__chat-list
