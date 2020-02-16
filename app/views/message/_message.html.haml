@@ -1,0 +1,11 @@
+.chat
+  .chat__info
+    .chat__info--left
+      = message.user.name
+    .chat__info--right
+      = message.created_at
+  .chat__contents
+    - if message.chat.present?
+      %p.chat__contents__message
+        = message.chat
+    = image_tag message.image.url, class: 'chat__contents__image' if message.image.present?

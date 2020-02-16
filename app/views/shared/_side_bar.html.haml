@@ -14,7 +14,7 @@
   .side-bar__group-list
     - current_user.groups.each do |group|
       .group-box
-        = link_to '#' do
+        = link_to group_message_index_path(group.id) do
           .group-box__name
             = group.name
           .group-box__chat
