@@ -28,7 +28,7 @@
         message
 
   .main-contents__footer
-    = form_for @message, url: group_message_index_path, class: "message-form" do |f|
+    = form_for [@group, @message],url: group_message_index_path, class: "message-form" do |f|
       .message-form
         .message-form__box
           = f.text_field :chat, placeholder: "type a message", class: "message-form__box__text"
