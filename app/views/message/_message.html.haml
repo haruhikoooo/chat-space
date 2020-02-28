@@ -3,7 +3,7 @@
     .chat__info--left
       = message.user.name
     .chat__info--right
-      = message.created_at
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
   .chat__contents
     - if message.chat.present?
       %p.chat__contents__message
