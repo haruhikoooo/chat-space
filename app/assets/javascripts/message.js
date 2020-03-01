@@ -3,15 +3,15 @@ $(function(){
     if (message.image){
       var html = `<div class="chat__info">
                     <div class="chat__info--left">
-                    ${message.user_name}
+                      ${message.user_name}
                     </div>
                     <div class="chat__info--right">
-                    ${message.created_at}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="chat__contents">
                     <p class="chat__contents__message">
-                    ${message.chat}
+                      ${message.chat}
                     </p>
                     <img class="chat__contents__image" src=${message.image} >
                   </div>`
@@ -19,15 +19,15 @@ $(function(){
     } else {
       var html = `<div class="chat__info">
                     <div class="chat__info--left">
-                    ${message.user_name}
+                      ${message.user_name}
                     </div>
                     <div class="chat__info--right">
-                    ${message.created_at}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="chat__contents">
                     <p class="chat__contents__message">
-                    ${message.chat}
+                      ${message.chat}
                     </p>
                   </div>`
       return html;
@@ -51,10 +51,12 @@ $(function(){
       $('.main-contents__chat-list').append(html);
       $('form')[0].reset();
       $('.main-contents__chat-list').animate({ scrollTop: $('.main-contents__chat-list')[0].scrollHeight});
-      $('.message-form__btn--send').prop('disabled', false);
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
+    })
+    .always(function(){
+      $('.message-form__btn--send').prop('disabled', false);
     })
   })
 });
