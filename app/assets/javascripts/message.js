@@ -1,37 +1,40 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      var html = `<div class="chat__info">
-                    <div class="chat__info--left">
-                      ${message.user_name}
+      var html = `<div class="chat" data-message-id=${message.id}>
+                    <div class="chat__info">
+                      <div class="chat__info--left">
+                        ${message.user_name}
+                      </div>
+                      <div class="chat__info--right">
+                        ${message.created_at}
+                      </div>
                     </div>
-                    <div class="chat__info--right">
-                      ${message.created_at}
+                    <div class="chat__contents">
+                      <p class="chat__contents__message">
+                        ${message.chat}
+                      </p>
+                      <img class="chat__contents__image" src=${message.image} >
                     </div>
-                  </div>
-                  <div class="chat__contents">
-                    <p class="chat__contents__message">
-                      ${message.chat}
-                    </p>
-                    <img class="chat__contents__image" src=${message.image} >
                   </div>`
-      return html;
     } else {
-      var html = `<div class="chat__info">
-                    <div class="chat__info--left">
-                      ${message.user_name}
+      var html = `<div class="chat" data-message-id=${message.id}>
+                    <div class="chat__info">
+                      <div class="chat__info--left">
+                        ${message.user_name}
+                      </div>
+                      <div class="chat__info--right">
+                        ${message.created_at}
+                      </div>
                     </div>
-                    <div class="chat__info--right">
-                      ${message.created_at}
+                    <div class="chat__contents">
+                      <p class="chat__contents__message">
+                        ${message.chat}
+                      </p>
                     </div>
-                  </div>
-                  <div class="chat__contents">
-                    <p class="chat__contents__message">
-                      ${message.chat}
-                    </p>
                   </div>`
-      return html;
     };
+    return html;
   }
 
   $('#new_message').on('submit', function(e){
@@ -59,4 +62,31 @@ $(function(){
       $('.message-form__btn--send').prop('disabled', false);
     })
   })
+
+  var reloadMessages = function(){
+    var last_message_id = $('.chat:last').data("message-id");
+    $.ajax({
+      url: 'api/message',
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      if(messages.length !== 0){
+        var insertHTML = '';
+        $.each(messages, function(i,message){
+          insertHTML += buildHTML(message)
+        });
+      $('.main-contents__chat-list').append(insertHTML);
+      $('.main-contents__chat-list').animate({ scrollTop: $('.main-contents__chat-list')[0].scrollHeight});
+      }
+    })
+    .fail(function(){
+      alert('error');
+    })
+
+  }
+  if (document.location.href.match(/\/groups\/\d+\/message/)){
+    setInterval(reloadMessages, 7000);
+  }
 });
