@@ -54,18 +54,17 @@ $(function(){
     .fail(function(){
       alert("ユーザー検索に失敗しました");
     });
-
-    $(document).off("click", '.user-search-add');
-    $(document).on("click", '.user-search-add', function(){
-      const userName = $(this).attr("data-user-name");
-      const userId = $(this).attr("data-user-id")
-      $(this).parent().remove();
-      addDeleteUser(userName, userId);
-      addMember(userId);
-    });
-
-    $(document).on("click", '.user-search-remove', function(){
-      $(this).parent().remove();
-    });
+  });
+  
+  $(document).on("click", '.user-search-add', function(){
+    const userName = $(this).attr("data-user-name");
+    const userId = $(this).attr("data-user-id")
+    $(this).parent().remove();
+    addDeleteUser(userName, userId);
+    addMember(userId);
+  });
+  
+  $(document).on("click", '.user-search-remove', function(){
+    $(this).parent().remove();
   });
 });
